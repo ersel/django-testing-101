@@ -25,7 +25,7 @@ SECRET_KEY = 's@-ft-&p=dv9y573e*fp$exh3eu5l#$4s38o$fe^s0zfr-2c=*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'oqqozppwaf.localtunnel.me']
+ALLOWED_HOSTS = [u'oqqozppwaf.localtunnel.me', '127.0.0.1']
 
 
 # Application definition

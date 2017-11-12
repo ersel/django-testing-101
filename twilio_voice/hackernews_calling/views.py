@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.views import View
 import hackernews
+from twilio.twiml.voice_response import VoiceResponse
 
 class HackerNewsStories(View):
     """
@@ -13,11 +14,10 @@ class HackerNewsStories(View):
         """
         Return top Hacker News story headlines in TwiML format
         """
-        twiml_str = '<?xml version="1.0" encoding="UTF-8"?>'
-        twiml_str += '<Response>'
         headlines = hackernews.get_headlines(5);
+        resp = VoiceResponse()
         for headline in headlines:
-            twiml_str += '<Say voice="woman" language="en-gb">{0}</Say>'.format(headline)
-        twiml_str += '</Response>'
+            resp.say(headline, voice='woman', language='en-gb')
 
+        twiml_str = str(resp)
         return HttpResponse(twiml_str, content_type='text/xml')

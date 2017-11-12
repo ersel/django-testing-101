@@ -15,5 +15,5 @@ class TestHeadlinesView(TestCase):
         twiml_response = HackerNewsStories.as_view()(get_headlines)
         self.assertEqual(get_headlines_patched_func.call_count, 1)
         self.assertEqual(twiml_response.status_code, 200)
-        expected_content = '<?xml version="1.0" encoding="UTF-8"?><Response><Say voice="woman" language="en-gb">headline 1</Say></Response>'
+        expected_content = '<?xml version="1.0" encoding="UTF-8"?><Response><Say language="en-gb" voice="woman">headline 1</Say></Response>'
         self.assertEqual(twiml_response.content, expected_content)
